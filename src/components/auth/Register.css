@@ -1,0 +1,58 @@
+.register {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-container {
+  width: 80%;
+  margin-top: 30px;
+  align-self: center;
+}
+
+.register-container > h2 {
+  color: var(--primary-color);
+}
+
+.register-container > h4 {
+  color: var(--secondary-color);
+  padding: 0 20px;
+}
+
+.register-container > .register-form {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 35px;
+  row-gap: 10px;
+}
+
+.register-container > .register-form > .form-group {
+  margin-right: 50px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.register-container > .register-form > .form-group > label {
+  display: block;
+  color: var(--secondary-color);
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.register-container > .register-form > .form-group > input,
+.register-container > .register-form > .form-group > select,
+.react-datepicker__input-container input {
+  width: 100%;
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  outline: none;
+  font-size: 18px;
+  padding: 5px;
+  margin-top: 15px;
+}
+
+.register-container > .register-form > .form-group > input:focus,
+.register-container > .register-form > .form-group > select:focus,
+.react-datepicker__input-container input:focus {
+  border: 2px solid var(--primary-color);
+}

@@ -1,0 +1,117 @@
+.proceedingRegister {
+  display: flex;
+  flex-direction: column;
+}
+
+.proceedingRegister-container {
+  margin-top: 30px;
+  width: 80%;
+  align-self: center;
+}
+
+.proceedingRegister-container > h2 {
+  color: var(--primary-color);
+}
+
+.proceedingRegister-container > .proceedingRegister-form > h2 {
+  color: var(--primary-color);
+}
+
+.proceedingRegister-container > h3 {
+  margin-top: 10px;
+  color: var(--primary-color);
+}
+
+.proceedingRegister-container > h3 > span {
+  color: var(--secondary-color);
+}
+
+.proceedingRegister-form {
+  margin-bottom: 30px;
+}
+
+.proceedingRegister-form > label {
+  display: block;
+  color: var(--secondary-color);
+  font-weight: 600;
+  font-size: 18px;
+  font-size: auto;
+  margin-top: 10px;
+}
+
+.proceedingRegister-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template:
+    "a b c d e"
+    "f f g g .";
+  column-gap: 25px;
+}
+
+.proceedingRegister-form-grid-2 {
+  display: grid;
+  grid-template: "a b c d e f";
+  column-gap: 25px;
+}
+
+.proceedingRegister-form > .a-grid {
+  grid-area: a;
+}
+
+.proceedingRegister-form > .b-grid {
+  grid-area: b;
+}
+
+.proceedingRegister-form > .c-grid {
+  grid-area: c;
+}
+
+.proceedingRegister-form > .d-grid {
+  grid-area: d;
+}
+
+.proceedingRegister-form > .e-grid {
+  grid-area: e;
+}
+
+.proceedingRegister-form > .f-grid {
+  grid-area: f;
+}
+
+.proceedingRegister-form > .g-grid {
+  grid-area: g;
+}
+
+.proceedingRegister-form > .proceedingRegister-form-grid > .form-group,
+.proceedingRegister-form > .proceedingRegister-form-grid-2 > .form-group  {
+  margin-right: 50px;
+  margin-top: 10px;
+}
+
+.proceedingRegister-form > .proceedingRegister-form-grid > .form-group > label,
+.proceedingRegister-form > .proceedingRegister-form-grid-2 > .form-group > label {
+  display: block;
+  color: var(--secondary-color);
+  font-weight: 600;
+  font-size: 18px;
+  font-size: auto;
+}
+
+.proceedingRegister-form > .proceedingRegister-form-grid .form-group > input,
+.proceedingRegister-form > .proceedingRegister-form-grid .form-group > textarea,
+.proceedingRegister-form > .proceedingRegister-form-grid-2 .form-group > input,
+.proceedingRegister-form > .proceedingRegister-form-grid-2 .form-group > textarea {
+  width: 100%;
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+  padding: 5px;
+  margin-top: 5px;
+  resize: none;
+}
+
+.proceedingRegister-form > .proceedingRegister-form-grid > .form-group > textarea,
+.proceedingRegister-form > .proceedingRegister-form-grid-2 > .form-group > textarea {
+  height: 100px;
+}

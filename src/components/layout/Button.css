@@ -1,0 +1,14 @@
+.btn {
+    border: none;
+    margin-top: 10px;
+    padding: 10px 45px;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    align-self: center;
+  }
+  
+  .btn:hover{
+    background-color: var(--secondary-color);
+  }

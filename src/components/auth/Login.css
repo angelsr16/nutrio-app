@@ -1,0 +1,59 @@
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.login > .login-brand {
+    margin: 10px;
+}
+
+.login > .card > .login-form {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login > .card > .login-form > label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--secondary-color);
+  font-weight: 700;
+}
+
+.login > .card > .login-form > label > span {
+  margin-left: 3px;
+  font-size: 12px;
+  text-decoration: underline;
+  color: gray;
+  cursor: pointer;
+}
+
+.login > .card > .login-form > input {
+  border: 1px solid var(--secondary-color);
+  outline: none;
+  height: 30px;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.login > .card > .login-form > input:focus {
+  border: 2px solid var(--primary-color);
+}
+
+.login > .card > a {
+  margin-top: 20px;
+  align-self: end;
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.login > .card > a:hover {
+  color: var(--secondary-color);
+}

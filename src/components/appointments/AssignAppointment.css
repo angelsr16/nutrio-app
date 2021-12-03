@@ -1,0 +1,57 @@
+.assignAppointment {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.assignAppointment > .assignAppointment-container {
+  align-self: center;
+  width: 80%;
+  margin-top: 30px;
+  color: var(--primary-color);
+}
+
+.assignAppointment > .assignAppointment-container > h3 {
+  color: var(--secondary-color);
+  margin-top: 10px;
+}
+
+.assignAppointment
+  > .assignAppointment-container
+  > h3
+  > .appointment-clientName {
+  color: var(--primary-color);
+}
+
+.form-group {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.assignAppointment
+  > .assignAppointment-container
+  > .assignAppointment-form
+  > .form-group
+  > label {
+  display: block;
+  color: var(--secondary-color);
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.assignAppointment
+  > .assignAppointment-container
+  > .assignAppointment-form
+  > .form-group
+  > input {
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  outline: none;
+  font-size: 18px;
+  padding: 5px;
+  margin-top: 15px;
+}
+
+.react-datepicker__input-container input {
+  width: 250px !important;
+}

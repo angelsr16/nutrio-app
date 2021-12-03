@@ -1,0 +1,28 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.dashboard-nutriologo {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-self: center;
+}
+
+.dashboard-nutriologo > a {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 18px;
+  text-decoration: none;
+  align-self: flex-end;
+}
+
+.dashboard-nutriologo > a:hover {
+  color: var(--secondary-color);
+}
+
+

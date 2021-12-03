@@ -1,0 +1,26 @@
+.appointment {
+    display: flex;
+    padding: 10px;
+    width: 100%;
+}
+
+.appointment > .appointment-fecha {
+    flex: 0.4;
+}
+
+.appointment > .appointment-hora {
+    flex: 0.2;
+}
+
+.appointment > .appointment-estatus {
+    font-weight: bold;
+    flex: 0.2;
+}
+
+.appointment > .appointment-registrar {
+    flex: 0.1;
+    color: var(--secondary-color);
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+}

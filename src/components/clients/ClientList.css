@@ -1,0 +1,34 @@
+.clientslist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.clients-header {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    color: white;
+    font-weight: 700;
+    margin-top: 10px;
+    background-color: var(--primary-color);
+    border-radius: 10px 10px 0 0;
+}
+
+.clients-header > .clients-header-nombre {
+    flex: 0.4;
+}
+
+.clients-header > .clients-header-contacto {
+    flex: 0.2;
+}
+
+.clients-header > .clients-header-estatus {
+    flex: 0.2;
+}
+
+.clientslist > .clients-body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}

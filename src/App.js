@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Login from "./components/auth/Login";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Home from "./components/home/Home";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <ToastContainer />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+
+          <Route path="/*" element={<Home />} />
+          {/* <Route exact path="/*" element={<Dashboard />} />
+
+          {/* Dashboard Nutriologo }
+          <Route path="/registro-usuario" element={<Register />} />
+          <Route path="/citas" element={<AppointmentsList />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/asignar-cita/:id" element={<AssignAppointment />} />
+          <Route path="/registro-avances/:id" element={<ProceedingRegister />} />
+
+          {/* Dashboard Cliente }
+          <Route path="/avances/:id" element={<Proceedings />}/> */}
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
