@@ -38,9 +38,11 @@ const ClientDashboard = ({ currentUser, userDiet, userProgress }) => {
                 diet={userDiet[meal]}
               />
             );
-          })}
+          },
+          <p>Recomendaciones: Tomar agua 2 veces al día</p>
+          
+          )}
       </div>
-      <p>Recomendaciones: Tomar agua 2 veces al día</p>
     </div>
   );
 };

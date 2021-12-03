@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import { withRouter } from "../../utils/withRouter";
 import { toast } from "react-toastify";
 
-const ProceedingRegister = ({ client, conductAppointment }) => {
+const ProceedingRegister = ({ appointment, users, conductAppointment }) => {
   const [newDietData, setNewDietData] = useState({
     desayuno: new WeekDays(),
     colacion_m: new WeekDays(),
@@ -49,9 +49,9 @@ const ProceedingRegister = ({ client, conductAppointment }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    conductAppointment(proceedingData, newDietData, client.uid);
+    conductAppointment(proceedingData, newDietData, users[appointment.clientId].uid);
     toast.info("Subiendo información...");
-    
+
     setNewDietData({
       desayuno: new WeekDays(),
       colacion_m: new WeekDays(),
@@ -72,12 +72,12 @@ const ProceedingRegister = ({ client, conductAppointment }) => {
 
   return (
     <div className="proceedingRegister">
-      {client ? (
+      {appointment && users && users[appointment.clientId] ? (
         <div className="proceedingRegister-container">
           <h2>Registro de avances</h2>
 
           <h3>
-            Cliente: <span>{client && client.name}</span>
+            Cliente: <span>{users && users[appointment.clientId].name}</span>
           </h3>
 
           <form className="proceedingRegister-form">
@@ -94,23 +94,27 @@ const ProceedingRegister = ({ client, conductAppointment }) => {
           </form>
         </div>
       ) : (
-        <p>No hay ningún cliente con ese id</p>
+        <p>No podemos encontrar alguna cita con ese id</p>
       )}
     </div>
   );
 };
 
 const mapStateToProps = (state, props) => {
+  // console.log(state.firestore.data.appointments[props.params.id]);
   return {
-    client:
-      state.firestore.data.users && state.firestore.data.users[props.params.id],
+    appointment:
+      state.firestore.data.appointments &&
+      state.firestore.data.appointments[props.params.id],
+    users:
+      state.firestore.data.users,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
     conductAppointment: (proceedingForm, newDietForm, clientId) =>
-      dispatch(conductAppointment(proceedingForm, newDietForm, clientId)),
+      dispatch(conductAppointment(proceedingForm, newDietForm, clientId, props.params.id)),
   };
 };
 

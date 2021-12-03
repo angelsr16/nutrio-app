@@ -1,11 +1,59 @@
 import "./AppointmentsList.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Appointment from "./Appointment";
 import { connect } from "react-redux";
 import Button from "../layout/Button";
+import ClientAppointmentsList from "./ClientAppointmentsList";
+import NutriniotistAppointments from "./NutriniotistAppointments";
 
 const AppointmentsList = ({ appointments, users, uid }) => {
-  const [lateAppointmentsFilter, setLateAppointmentsFilter] = useState(false);
+  const renderAppointments = () => {
+    if (appointments && users && uid) {
+      if (users[uid].rol === "Cliente") {
+        return (
+          <>
+            <div className="appointments-subheader">
+              <p className="appointments-hora">Fecha</p>
+              <p className="appointments-fecha">Hora</p>
+              <p className="appointments-estatus">Estatus</p>
+            </div>
+            <div className="appointments-body">
+              <ClientAppointmentsList
+                appointments={appointments}
+                users={users}
+                uid={uid}
+              />
+              <div className="appointments-header">
+                <p>Realizadas</p>
+              </div>
+              <ClientAppointmentsList
+                appointments={appointments}
+                users={users}
+                uid={uid}
+                hasBeenConducted={true}
+              />
+            </div>
+          </>
+        );
+      } else {
+        return (
+          <>
+            <div className="appointments-subheader">
+              <p className="appointments-hora">Nombre</p>
+              <p className="appointments-fecha">Fecha y hora</p>
+              <p className="appointments-estatus">Estatus</p>
+            </div>
+            <div className="appointments-body">
+              <NutriniotistAppointments
+                appointments={appointments}
+                users={users}
+              />
+            </div>
+          </>
+        );
+      }
+    }
+  };
 
   return (
     <div className="appointments">
@@ -15,53 +63,7 @@ const AppointmentsList = ({ appointments, users, uid }) => {
         <div className="appointments-header">
           <p>Pendientes</p>
         </div>
-        <div className="appointments-subheader">
-          <p className="appointments-hora">Nombre</p>
-          <p className="appointments-fecha">Fecha y hora</p>
-          <p className="appointments-estatus">Estatus</p>
-        </div>
-        <div className="appointments-body">
-          {appointments && users && uid && users[uid].rol === "Cliente"
-            ? Object.keys(appointments)
-                .filter((key) => appointments[key].clientId === uid)
-                .map(
-                  (key, i) =>
-                    // console.log(appointments[key]),
-                    appointments[key].appointmentDateInMillis >
-                      new Date().getTime() && (
-                      <Appointment
-                        key={i}
-                        fecha={`${new Date(
-                          appointments[key].appointmentDateInMillis
-                        ).toLocaleDateString()} ${new Date(
-                          appointments[key].appointmentDateInMillis
-                        ).toLocaleTimeString()}`}
-                        cliente={users[appointments[key].clientId]}
-                        estatus={appointments[key].status}
-                      />
-                    )
-                )
-            : appointments &&
-              users &&
-              Object.keys(appointments).map(
-                (key, i) =>
-                  appointments[key].appointmentDateInMillis >
-                    new Date().getTime() &&
-                  (console.log(appointments[key].clientId),
-                  (
-                    <Appointment
-                      key={i}
-                      fecha={`${new Date(
-                        appointments[key].appointmentDateInMillis
-                      ).toLocaleDateString()} ${new Date(
-                        appointments[key].appointmentDateInMillis
-                      ).toLocaleTimeString()}`}
-                      cliente={users[appointments[key].clientId]}
-                      estatus={appointments[key].status}
-                    />
-                  ))
-              )}
-        </div>
+        {renderAppointments()}
       </div>
     </div>
   );

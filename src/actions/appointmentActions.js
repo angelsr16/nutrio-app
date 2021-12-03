@@ -53,16 +53,18 @@ export const setAppointment = (formData) => {
   };
 };
 
-export const conductAppointment = (proceedingForm, newDietForm, clientId) => {
+export const conductAppointment = (proceedingForm, newDietForm, clientId, appointmentId) => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
     const firestore = firebase.firestore();
+    
 
     firestore
       .collection("users")
       .doc(clientId)
       .collection("progress")
-      .add({
+      .doc(appointmentId)
+      .set({
         ...proceedingForm,
         createdAt: new Date(),
       })
@@ -96,5 +98,9 @@ export const conductAppointment = (proceedingForm, newDietForm, clientId) => {
           type: "CONDUCT_APPOINTMENT_ASSIGN_DIET_ERROR",
         });
       });
+
+    firestore.collection("appointments").doc(appointmentId).update({
+      status: "Realizada"
+    })
   };
 };
