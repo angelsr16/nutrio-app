@@ -22,7 +22,7 @@ const Appointment = ({
             <p className="appointment-estatus">{estatus}</p>
             {hasBeenConducted && (
               <Link
-                to={`/avances/${cliente.uid}`}
+                to={`/avances/${appointmentId}`}
                 className="appointment-registrar"
               >
                 Ver expediente

@@ -28,7 +28,7 @@ const Home = ({ uid }) => {
         <Route path="/registro-avances/:id" element={<ProceedingRegister />} />
 
         {/* Dashboard Cliente */}
-        <Route path="/avances/:id" element={<Proceedings />} />
+        {/* <Route path="/avances/:id" element={<Proceedings />} /> */}
       </Routes>
     </>
   );

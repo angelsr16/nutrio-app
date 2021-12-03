@@ -1,5 +1,5 @@
-import setHours from "date-fns/setHours";
-import setMinutes from "date-fns/setMinutes";
+// import setHours from "date-fns/setHours";
+// import setMinutes from "date-fns/setMinutes";
 
 export const setAppointment = (formData) => {
   return (dispatch, getState, { getFirebase }) => {
@@ -66,7 +66,7 @@ export const conductAppointment = (proceedingForm, newDietForm, clientId, appoin
       .doc(appointmentId)
       .set({
         ...proceedingForm,
-        createdAt: new Date(),
+        createdAt: new Date().getTime(),
       })
       .then(() => {
         dispatch({
@@ -86,7 +86,7 @@ export const conductAppointment = (proceedingForm, newDietForm, clientId, appoin
       .doc("assignedDiet")
       .set({
         ...newDietForm,
-        createdAt: new Date(),
+        createdAt: new Date().getTime(),
       })
       .then(() => {
         dispatch({

@@ -1,48 +1,23 @@
 import React from "react";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
+import { Route, Routes } from "react-router";
 import { compose } from "redux";
+import Proceedings from "../../proceedings/Proceedings";
+import AssignedDiet from "./AssignedDiet";
 import "./ClientDashboard.css";
-import WeekDiet from "./WeekDiet";
 
 const ClientDashboard = ({ currentUser, userDiet, userProgress }) => {
-  const meals = ["desayuno", "colacion_m", "comida", "colacion_v", "cena"];
-
-  const meals_names = [
-    "Desayuno",
-    "Colación matutina",
-    "Comida",
-    "Colación vespertina",
-    "Cena",
-  ];
+  
 
   return (
     <div className="dashboard-cliente">
-      <h2>Dieta asignada</h2>
-      <div className="assignedDiet">
-        <div className="assignedDiet-header">
-          <p>L</p>
-          <p>M</p>
-          <p>M</p>
-          <p>J</p>
-          <p>V</p>
-          <p>General</p>
-        </div>
-
-        {userDiet &&
-          meals.map((meal, i) => {
-            return (
-              <WeekDiet
-                key={meal}
-                headerTitle={meals_names[i]}
-                diet={userDiet[meal]}
-              />
-            );
-          },
-          <p>Recomendaciones: Tomar agua 2 veces al día</p>
-          
-          )}
-      </div>
+      <Routes>
+        <Route path="" element={<AssignedDiet />} />
+        {/* Dashboard Cliente */}
+        <Route path="/avances/:id" element={<Proceedings currentUser={currentUser}/>} />
+      </Routes>
+      
     </div>
   );
 };

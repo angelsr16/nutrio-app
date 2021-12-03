@@ -30,6 +30,7 @@ const ClientAppointmentsList = ({
                     estatus={appointment.status}
                     isClient={true}
                     hasBeenConducted={hasBeenConducted}
+                    appointmentId={key}
                   />
                 );
               }
@@ -50,8 +51,6 @@ const ClientAppointmentsList = ({
                     hasBeenConducted={hasBeenConducted}
                   />
                 );
-              }else {
-                  return <p key={i}>No tienes citas pendientes por el momento</p>
               }
             }
           }

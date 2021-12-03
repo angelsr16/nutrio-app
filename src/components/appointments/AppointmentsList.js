@@ -1,56 +1,58 @@
 import "./AppointmentsList.css";
-import { useState, useEffect } from "react";
-import Appointment from "./Appointment";
+// import { useState, useEffect } from "react";
+// import Appointment from "./Appointment";
 import { connect } from "react-redux";
-import Button from "../layout/Button";
+// import Button from "../layout/Button";
 import ClientAppointmentsList from "./ClientAppointmentsList";
 import NutriniotistAppointments from "./NutriniotistAppointments";
 
 const AppointmentsList = ({ appointments, users, uid }) => {
   const renderAppointments = () => {
-    if (appointments && users && uid) {
-      if (users[uid].rol === "Cliente") {
-        return (
-          <>
-            <div className="appointments-subheader">
-              <p className="appointments-hora">Fecha</p>
-              <p className="appointments-fecha">Hora</p>
-              <p className="appointments-estatus">Estatus</p>
-            </div>
-            <div className="appointments-body">
-              <ClientAppointmentsList
-                appointments={appointments}
-                users={users}
-                uid={uid}
-              />
-              <div className="appointments-header">
-                <p>Realizadas</p>
+    if (appointments) {
+      if(users && uid){
+        if (users[uid].rol === "Cliente") {
+          return (
+            <>
+              <div className="appointments-subheader">
+                <p className="appointments-hora">Fecha</p>
+                <p className="appointments-fecha">Hora</p>
+                <p className="appointments-estatus">Estatus</p>
               </div>
-              <ClientAppointmentsList
-                appointments={appointments}
-                users={users}
-                uid={uid}
-                hasBeenConducted={true}
-              />
-            </div>
-          </>
-        );
-      } else {
-        return (
-          <>
-            <div className="appointments-subheader">
-              <p className="appointments-hora">Nombre</p>
-              <p className="appointments-fecha">Fecha y hora</p>
-              <p className="appointments-estatus">Estatus</p>
-            </div>
-            <div className="appointments-body">
-              <NutriniotistAppointments
-                appointments={appointments}
-                users={users}
-              />
-            </div>
-          </>
-        );
+              <div className="appointments-body">
+                <ClientAppointmentsList
+                  appointments={appointments}
+                  users={users}
+                  uid={uid}
+                />
+                <div className="appointments-header">
+                  <p>Realizadas</p>
+                </div>
+                <ClientAppointmentsList
+                  appointments={appointments}
+                  users={users}
+                  uid={uid}
+                  hasBeenConducted={true}
+                />
+              </div>
+            </>
+          );
+        } else {
+          return (
+            <>
+              <div className="appointments-subheader">
+                <p className="appointments-hora">Nombre</p>
+                <p className="appointments-fecha">Fecha y hora</p>
+                <p className="appointments-estatus">Estatus</p>
+              </div>
+              <div className="appointments-body">
+                <NutriniotistAppointments
+                  appointments={appointments}
+                  users={users}
+                />
+              </div>
+            </>
+          );
+        }
       }
     }
   };
