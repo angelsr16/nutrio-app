@@ -8,6 +8,7 @@ import { conductAppointment } from "../../actions/appointmentActions";
 import { connect } from "react-redux";
 import { withRouter } from "../../utils/withRouter";
 import { toast } from "react-toastify";
+import { ValidateFormEmpty, ValidateFormNewDiet } from "../../utils/ValidateForm";
 
 const ProceedingRegister = ({ appointment, users, conductAppointment }) => {
   const [newDietData, setNewDietData] = useState({
@@ -49,25 +50,32 @@ const ProceedingRegister = ({ appointment, users, conductAppointment }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    conductAppointment(proceedingData, newDietData, users[appointment.clientId].uid);
-    toast.info("Subiendo información...");
+    if (ValidateFormEmpty(proceedingData) && ValidateFormNewDiet(newDietData)) {
+      console.log("Subir");
+      // conductAppointment(
+      //   proceedingData,
+      //   newDietData,
+      //   users[appointment.clientId].uid
+      // );
+      // toast.info("Subiendo información...");
 
-    setNewDietData({
-      desayuno: new WeekDays(),
-      colacion_m: new WeekDays(),
-      comida: new WeekDays(),
-      colacion_v: new WeekDays(),
-      cena: new WeekDays(),
-    });
-    setProceedingData({
-      peso: "",
-      grasa: "",
-      agua: "",
-      muscular: "",
-      visceral: "",
-      observaciones: "",
-      recomendaciones: "",
-    });
+      // setNewDietData({
+      //   desayuno: new WeekDays(),
+      //   colacion_m: new WeekDays(),
+      //   comida: new WeekDays(),
+      //   colacion_v: new WeekDays(),
+      //   cena: new WeekDays(),
+      // });
+      // setProceedingData({
+      //   peso: "",
+      //   grasa: "",
+      //   agua: "",
+      //   muscular: "",
+      //   visceral: "",
+      //   observaciones: "",
+      //   recomendaciones: "",
+      // });
+    }
   };
 
   return (
@@ -106,15 +114,21 @@ const mapStateToProps = (state, props) => {
     appointment:
       state.firestore.data.appointments &&
       state.firestore.data.appointments[props.params.id],
-    users:
-      state.firestore.data.users,
+    users: state.firestore.data.users,
   };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
     conductAppointment: (proceedingForm, newDietForm, clientId) =>
-      dispatch(conductAppointment(proceedingForm, newDietForm, clientId, props.params.id)),
+      dispatch(
+        conductAppointment(
+          proceedingForm,
+          newDietForm,
+          clientId,
+          props.params.id
+        )
+      ),
   };
 };
 
