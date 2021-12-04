@@ -34,12 +34,21 @@ const Appointment = ({
             <p className="appointment-fecha">{cliente.name}</p>
             <p className="appointment-hora">{fecha}</p>
             <p className="appointment-estatus">{estatus}</p>
-            <Link
-              to={`/registro-avances/${appointmentId}`}
-              className="appointment-registrar"
-            >
-              Registrar
-            </Link>
+            {hasBeenConducted ? (
+              <Link
+                to={`/expediente/${appointmentId}`}
+                className="appointment-registrar"
+              >
+                Ver expediente
+              </Link>
+            ) : (
+              <Link
+                to={`/registro-avances/${appointmentId}`}
+                className="appointment-registrar"
+              >
+                Registrar
+              </Link>
+            )}
           </div>
         ))}
     </>

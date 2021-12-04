@@ -8,6 +8,8 @@ const Client = ({ nombre, contacto, estatus, id }) => {
       <span className="client-component-contacto">{contacto}</span>
       <span className="client-component-estatus">{estatus}</span>
       <Link to={`/asignar-cita/${id}`} className="client-component-setAppointment" ><span className="material-icons">event</span></Link>
+      
+      
     </div>
   );
 };

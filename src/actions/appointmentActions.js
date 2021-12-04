@@ -1,6 +1,8 @@
 // import setHours from "date-fns/setHours";
 // import setMinutes from "date-fns/setMinutes";
 
+import { createFirestoreInstance } from "redux-firestore";
+
 export const setAppointment = (formData) => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
@@ -101,6 +103,12 @@ export const conductAppointment = (proceedingForm, newDietForm, clientId, appoin
 
     firestore.collection("appointments").doc(appointmentId).update({
       status: "Realizada"
+    })
+
+    firestore.collection("madeAppointments").doc(appointmentId).set({
+      ...proceedingForm,
+      clientId,
+      createdAt: new Date().getTime()
     })
   };
 };

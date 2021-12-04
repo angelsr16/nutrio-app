@@ -24,18 +24,6 @@ const ClientList = ({ users }) => {
                 />
               )
           )}
-        {/* {users &&
-          users.map((user) => {
-            user.rol === "Cliente" && (
-              <Client
-                nombre={user.name}
-                contacto={user.phoneNumber}
-                estatus={user.status}
-              />
-            );
-          })} */}
-        {/* <Client nombre="Angel" contacto="2282362059" estatus="Pendiente" />
-        <Client nombre="Jesus" contacto="2871809823" estatus="Pagado" /> */}
       </div>
     </div>
   );

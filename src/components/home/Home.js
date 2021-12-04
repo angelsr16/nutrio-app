@@ -11,6 +11,7 @@ import Dashboard from "../dashboard/Dashboard";
 import NavBar from "../layout/NavBar";
 import ProceedingRegister from "../proceedings/ProceedingRegister";
 import Proceedings from "../proceedings/Proceedings";
+import Records from "../proceedings/Records";
 
 const Home = ({ uid }) => {
   return (
@@ -26,6 +27,7 @@ const Home = ({ uid }) => {
         <Route path="/chat" element={<Chat />} />
         <Route path="/asignar-cita/:id" element={<AssignAppointment />} />
         <Route path="/registro-avances/:id" element={<ProceedingRegister />} />
+        <Route path="/expediente/:id" element={<Records  />} />
 
         {/* Dashboard Cliente */}
         {/* <Route path="/avances/:id" element={<Proceedings />} /> */}
@@ -54,6 +56,9 @@ export default compose(
     {
       collection: "appointmentDates",
     },
+    {
+      collection: "madeAppointments"
+    }
     
   ])
 )(Home);

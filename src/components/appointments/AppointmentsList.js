@@ -5,8 +5,16 @@ import { connect } from "react-redux";
 // import Button from "../layout/Button";
 import ClientAppointmentsList from "./ClientAppointmentsList";
 import NutriniotistAppointments from "./NutriniotistAppointments";
+import { useState } from "react";
 
 const AppointmentsList = ({ appointments, users, uid }) => {
+
+  const [madeAppointmentsFilter, setMadeAppointmentsFilter] = useState(false);
+
+  const toggleFilter = () => {
+    setMadeAppointmentsFilter(!madeAppointmentsFilter);
+  }
+
   const renderAppointments = () => {
     if (appointments) {
       if(users && uid){
@@ -48,6 +56,7 @@ const AppointmentsList = ({ appointments, users, uid }) => {
                 <NutriniotistAppointments
                   appointments={appointments}
                   users={users}
+                  madeAppointments={madeAppointmentsFilter}
                 />
               </div>
             </>
@@ -61,9 +70,9 @@ const AppointmentsList = ({ appointments, users, uid }) => {
     <div className="appointments">
       <div className="appointments-container">
         <h2>Citas</h2>
-
+        <p onClick={toggleFilter}>Citas {madeAppointmentsFilter ? "Pendientes" : "Realizadas"}</p>
         <div className="appointments-header">
-          <p>Pendientes</p>
+          <p>{madeAppointmentsFilter ? "Realizadas" : "Pendientes"}</p>
         </div>
         {renderAppointments()}
       </div>

@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.madeAppointments-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-self: center;
+  margin-bottom: 50px;
+}
+
+.madeAppointments-container > h2 {
+    color: var(--secondary-color);
+}
+
+.proceedingInfo {
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 15px;
+  background-color: white;
+}
+
+.proceedingInfo > .subTitle {
+  color: var(--secondary-color);
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.proceedingInfo > .subTitle > .subTitle-info {
+  color: var(--primary-color);
+  font-size: 22px;
+}
