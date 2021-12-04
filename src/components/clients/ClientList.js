@@ -8,7 +8,7 @@ const ClientList = ({ users }) => {
       <div className="clients-header">
         <p className="clients-header-nombre">Nombre</p>
         <p className="clients-header-contacto">Contacto</p>
-        <p className="clients-header-estatus">Estatus</p>
+        <p className="clients-header-estatus">Correo</p>
       </div>
       <div className="clients-body">
         {users &&
@@ -20,7 +20,7 @@ const ClientList = ({ users }) => {
                   id={users[key].uid}
                   nombre={users[key].name}
                   contacto={users[key].phoneNumber}
-                  estatus={users[key].status}
+                  estatus={users[key].email}
                 />
               )
           )}

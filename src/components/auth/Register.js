@@ -6,6 +6,10 @@ import "./Register.css";
 import { useState } from "react";
 import { connect } from "react-redux";
 import generator from "generate-password";
+import {
+  OnlyNumbers,
+  ValidateForm,
+} from "../../utils/ValidateForm";
 
 const Register = ({ registerNewClient }) => {
   const [formData, setFormData] = useState({
@@ -13,32 +17,43 @@ const Register = ({ registerNewClient }) => {
     email: "",
     dateOfBirth: "",
     phoneNumber: "",
-    goal: "",
-    status: "",
-    password: generator.generate({length: 6, numbers: true}),
+    goal: "Bajar de peso",
+    gender: "Masculino",
+    password: generator.generate({ length: 6, numbers: true }),
   });
 
-
-  const handleChange = (flag, value) => {
-    switch (flag) {
-      case "dateOfBirth":
-        setFormData({
-          ...formData,
-          dateOfBirth: value,
-        });
-        break;
-      default:
+  const handleChange = (flag, value, regex, e) => {
+    if (regex) {
+      if (value === "" || regex.test(value)) {
         setFormData({
           ...formData,
           [flag]: value,
         });
-        break;
+        return;
+      }
+    } else {
+      switch (flag) {
+        case "dateOfBirth":
+          setFormData({
+            ...formData,
+            dateOfBirth: value,
+          });
+          break;
+        default:
+          setFormData({
+            ...formData,
+            [flag]: value,
+          });
+          break;
+      }
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    registerNewClient(formData);
+    if (ValidateForm(formData)) {
+      registerNewClient(formData);
+    }
   };
 
   return (
@@ -59,22 +74,45 @@ const Register = ({ registerNewClient }) => {
             <input
               type="email"
               name="email"
+              required={true}
               onChange={(e) => handleChange(e.target.name, e.target.value)}
             />
           </div>
 
           <div className="form-group">
+            <label htmlFor="dateOfBirth">Sexo: </label>
+            <select
+              value={formData.gender}
+              onChange={(e) => handleChange(e.target.name, e.target.value)}
+              name="gender"
+            >
+              <option defaultValue="Masculino">Masculino</option>
+              <option defaultValue="Femenino">Femenino</option>
+              <option defaultValue="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div className="form-group">
             <label htmlFor="phoneNumber">Número de telefono: </label>
             <input
-              type="number"
+              minLength={10}
+              maxLength={10}
+              type="text"
+              onKeyPress={(event) => {
+                OnlyNumbers(event);
+              }}
+              // pattern="[0-9]*"
               name="phoneNumber"
-              onChange={(e) => handleChange(e.target.name, e.target.value)}
+              onChange={(e) =>
+                handleChange(e.target.name, e.target.value, /^[0-9\b]+$/, e)
+              }
             />
           </div>
 
           <div className="form-group">
             <label htmlFor="dateOfBirth">Fecha de nacimiento: </label>
             <DatePicker
+              dateFormat="dd/MM/yyyy"
               wrapperClassName="datepicker-input"
               selected={formData.dateOfBirth}
               onChange={(date) => handleChange("dateOfBirth", date)}
@@ -88,20 +126,19 @@ const Register = ({ registerNewClient }) => {
               onChange={(e) => handleChange(e.target.name, e.target.value)}
               name="goal"
             >
-              <option defaultValue="">Seleccione una opción</option>
               <option defaultValue="Bajar">Bajar de peso</option>
               <option defaultValue="Ganar">Ganar masa muscular</option>
             </select>
           </div>
 
-          <div className="form-group">
+          {/* <div className="form-group">
             <label htmlFor="status">Estatus pago: </label>
             <input
               type="text"
               name="status"
               onChange={(e) => handleChange(e.target.name, e.target.value)}
             />
-          </div>
+          </div> */}
 
           <Button
             text="Registrar cliente"

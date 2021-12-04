@@ -42,7 +42,7 @@ export const registerNewClient = (formData) => {
             dateOfBirth: formData.dateOfBirth,
             phoneNumber: formData.phoneNumber,
             goal: formData.goal,
-            status: formData.status,
+            gender: formData.gender,
             rol: "Cliente"
           })
           .then(() => {

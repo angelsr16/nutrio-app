@@ -13,6 +13,10 @@
   align-self: center;
 }
 
+.dashboard-nutriologo > h2 {
+  color: var(--primary-color);
+}
+
 .dashboard-nutriologo > a {
   color: var(--primary-color);
   font-weight: 600;

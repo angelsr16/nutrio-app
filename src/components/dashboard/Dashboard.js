@@ -10,6 +10,7 @@ const Dashboard = ({ currentUser }) => {
     <div className="dashboard">
       {currentUser && currentUser.rol === "Nutriologo" ? (
         <div className="dashboard-nutriologo">
+          <h2>Clientes</h2>
           <Link to="registro-usuario">Registrar nuevo cliente</Link>
           <ClientList />
         </div>
