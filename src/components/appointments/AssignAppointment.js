@@ -21,9 +21,13 @@ const AssignAppointment = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if(currentUser){
-      toast.info("Asignando cita...");
-      setAppointment(formData);
-      setFormData({});
+      if(formData.appointmentDate !== ""){
+        toast.info("Asignando cita...");
+        setAppointment(formData);
+        setFormData({});
+      }else{
+        toast.info("¡Selecciona una fecha!");
+      }
     }
   };
 
