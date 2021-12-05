@@ -1,7 +1,3 @@
-// import setHours from "date-fns/setHours";
-// import setMinutes from "date-fns/setMinutes";
-
-import { createFirestoreInstance } from "redux-firestore";
 
 export const setAppointment = (formData) => {
   return (dispatch, getState, { getFirebase }) => {

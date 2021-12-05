@@ -1,0 +1,71 @@
+.chatClient {
+  width: 350px;
+  height: 400px;
+  background-color: white;
+  border: 1px solid var(--secondary-color);
+  position: fixed;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  right: 0;
+  bottom: 0;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chatClient > .chatHeader {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 15px 15px 0 0;
+  padding: 10px;
+  color: white;
+  background-color: var(--secondary-color);
+}
+
+.chatClient > .chatHeader > span {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.chatClient > .chatBody {
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.chatClient > .chatFooter {
+  display: flex;
+  padding: 10px;
+}
+
+.chatClient > .chatFooter > input {
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 5px;
+  margin-right: 15px;
+  border: 1px solid var(--secondary-color);
+}
+
+.chatClient > .chatFooter > span {
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.chatButton {
+  cursor: pointer;
+  position: fixed;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  color: white;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+}

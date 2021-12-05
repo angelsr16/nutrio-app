@@ -17,7 +17,7 @@ const NavBar = ({ currentUser, signOut }) => {
       <div className="nav-links">
         <Link to="/" >{currentUser && currentUser.rol === "Nutriologo" ? "Clientes" : "Dieta"} </Link>
         <Link to="/citas">Citas</Link>
-        <Link to="/chat">Chat</Link>
+        {currentUser && currentUser.rol === "Nutriologo" && <Link to="/chat">Chat</Link>}
         <span>|</span>
         <Link to="#" onClick={handleSignOut}>
           Cerrar sesión

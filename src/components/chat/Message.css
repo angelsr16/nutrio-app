@@ -1,0 +1,33 @@
+.message-content {
+  padding: 0;
+  margin: 0;
+}
+
+.message-container {
+  width: 50%;
+  position: relative;
+  margin-bottom: 5px;
+  color: white;
+  padding: 5px 10px;
+  word-wrap: break-word;
+  border-radius: 15px;
+}
+
+.message-transmitter {
+  text-align: right;
+  background-color: var(--secondary-color);
+  margin-left: calc(100% - 50%);
+  
+}
+
+.message-receptor {
+  text-align: left;
+  background-color: var(--primary-color);
+}
+/* 
+.message-emitter {
+}
+
+.message-emitter > p {
+  margin: 10px;
+} */

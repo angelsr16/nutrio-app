@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import ClientList from "../clients/ClientList";
+import ChatClient from "./client/ChatClient";
 import ClientDashboard from "./client/ClientDashboard";
 import "./Dashboard.css";
 
@@ -15,7 +16,11 @@ const Dashboard = ({ currentUser }) => {
           <ClientList />
         </div>
       ) : (
-        currentUser && <ClientDashboard currentUser={currentUser} />
+        currentUser && (
+          <>
+            <ClientDashboard currentUser={currentUser} />
+          </>
+        )
       )}
     </div>
   );

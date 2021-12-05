@@ -24,7 +24,7 @@ const Home = ({ uid }) => {
         {/* Dashboard Nutriologo */}
         <Route path="/registro-usuario" element={<Register />} />
         <Route path="/citas" element={<AppointmentsList />} />
-        <Route path="/chat" element={<Chat />} />
+        {/* <Route path="/chat" element={<Chat />} /> */}
         <Route path="/asignar-cita/:id" element={<AssignAppointment />} />
         <Route path="/registro-avances/:id" element={<ProceedingRegister />} />
         <Route path="/expediente/:id" element={<Records  />} />
