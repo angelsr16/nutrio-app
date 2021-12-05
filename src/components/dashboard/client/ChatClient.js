@@ -88,11 +88,14 @@ const ChatClient = ({ currentUser, sendMessage, chat }) => {
 };
 
 const mapStateToProps = (state, props) => {
-  console.log(state.firestore.data.chat);
   return {
-    chat: props.currentUser
-      ? state.firestore.data.chat[props.currentUser.uid]
-      : state.firestore.data.chat,
+    // chat: props.currentUser
+    //   ? state.firestore.data.chat[props.currentUser.uid]
+    //   : state.firestore.data.chat,
+    chat:
+      state.firestore.data.chat &&
+      props.currentUser &&
+      state.firestore.data.chat[props.currentUser.uid],
   };
 };
 
