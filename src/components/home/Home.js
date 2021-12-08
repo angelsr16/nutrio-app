@@ -9,8 +9,7 @@ import Chat from "../chat/Chat";
 import { Navigate } from "react-router-dom";
 import Dashboard from "../dashboard/Dashboard";
 import NavBar from "../layout/NavBar";
-import ProceedingRegister from "../proceedings/ProceedingRegister";
-import Proceedings from "../proceedings/Proceedings";
+import ProceedingRegister from "../proceedings/ProceedingRegister"; 
 import Records from "../proceedings/Records";
 
 const Home = ({ uid }) => {
@@ -27,8 +26,8 @@ const Home = ({ uid }) => {
         {/* <Route path="/chat" element={<Chat />} /> */}
         <Route path="/asignar-cita/:id" element={<AssignAppointment />} />
         <Route path="/registro-avances/:id" element={<ProceedingRegister />} />
-        <Route path="/expediente/:id" element={<Records  />} />
-
+        <Route path="/expediente/:id" element={<Records />} />
+        <Route path="/chat" element ={<Chat uid={uid}/>} />
         {/* Dashboard Cliente */}
         {/* <Route path="/avances/:id" element={<Proceedings />} /> */}
       </Routes>
@@ -57,8 +56,10 @@ export default compose(
       collection: "appointmentDates",
     },
     {
-      collection: "madeAppointments"
+      collection: "madeAppointments",
+    },
+    {
+      collection: "chat"
     }
-    
   ])
 )(Home);

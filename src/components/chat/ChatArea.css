@@ -1,0 +1,32 @@
+.chatArea {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: whitesmoke;
+}
+
+.chatArea > .chatBody {
+    height: 100%;
+    padding: 20px;
+    overflow-y: scroll;
+}
+
+.chatArea > .chatFooter {
+    display: flex;
+    padding: 10px;
+    width: 100%;
+}
+
+.chatArea > .chatFooter > input {
+    width: 100%;
+    border: 1px solid var(--secondary-color);
+    border-radius: 15px;
+    padding: 5px;
+    margin-right: 10px;
+    outline: none;
+}
+
+.chatArea > .chatFooter > span {
+    cursor: pointer;
+}

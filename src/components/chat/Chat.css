@@ -1,0 +1,15 @@
+.chat {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 54px);
+}
+
+.chat > .sideBar {
+    background-color: var(--secondary-color);
+    width: 20%;
+    padding: 20px;
+}
+
+.chat > .sideBar > h2 {
+    color: var(--primary-color);
+}

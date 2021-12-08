@@ -1,0 +1,13 @@
+.userItem {
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.userItem:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.isSelected {
+    background-color: var(--primary-color);
+}
