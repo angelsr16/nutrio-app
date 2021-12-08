@@ -4,7 +4,7 @@ import Message from "./Message";
 import { sendMessageNutritionist } from "../../actions/chatActions";
 import { connect } from "react-redux";
 
-const ChatArea = ({ currentUser, chat, sendMessageNutritionist, client }) => {
+const ChatArea = ({ currentUser, chat, sendMessageNutritionist, client, clientName }) => {
   const [message, setMessage] = useState({
     authorId: currentUser ? currentUser : "",
     message: "",
@@ -26,6 +26,9 @@ const ChatArea = ({ currentUser, chat, sendMessageNutritionist, client }) => {
 
   return (
     <div className="chatArea">
+      <div className="chatHeader">
+        {clientName && clientName}
+      </div>
       <div className="chatBody">
         {currentUser &&
           chat &&

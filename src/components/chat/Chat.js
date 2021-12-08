@@ -38,10 +38,12 @@ const Chat = ({ users, chat, uid }) => {
       </div>
       {/* {renderChatArea()} */}
       {currentClient && chat && (
+        console.log("Hola"),
         <ChatArea
           chat={chat[currentClient.uid]}
           currentUser={uid}
           client={currentClient.uid}
+          clientName={currentClient.name}
         />
       )}
       {/* {currentClient && chat && (
@@ -52,6 +54,7 @@ const Chat = ({ users, chat, uid }) => {
 };
 
 const mapStateToProps = (state) => {
+  console.log(state.firestore.data.chat)
   return {
     chat: state.firestore.data.chat,
     users: state.firestore.data.users,
